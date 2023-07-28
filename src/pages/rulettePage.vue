@@ -77,6 +77,7 @@ export default {
     justify-content: center;
     align-items: center;
     width:150px;
+    height: 400px;
   }
   img{
     position: relative;

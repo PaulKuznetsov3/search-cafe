@@ -40,9 +40,7 @@ export default {
   async mounted() {
     try {
       this.cafe = (await this.fetchCafeData()).data;
-      console.log(this.cafe.data);
     } catch (e) {
-      console.log(e);
       this.$toast.error('ошибка соединения');
     }
   },

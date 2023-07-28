@@ -5,7 +5,6 @@
           :key="cafe.id"
           :cafe="cafe"
           :id="cafe.id"
-          @openModal="openModal"
         />
       </v-container>
 
@@ -26,7 +25,6 @@ export default {
     try {
       this.cafes = (await this.fetchData()).data;
     } catch (e) {
-      console.log(e);
       this.$toast.error('ошибка соединения');
     }
   },

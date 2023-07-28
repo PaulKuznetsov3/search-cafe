@@ -11,6 +11,9 @@
     <v-btn v-if="currentPage === 'cafes'" outlined class="mr-10">
         <router-link class="td" to="/cafes" >Войти</router-link>
     </v-btn>
+    <v-btn v-if="currentPage === 'cafe'" outlined class="mr-10">
+        <router-link class="td" to="/cafes" >Назад</router-link>
+    </v-btn>
     </v-app-bar>
   </v-container>
 </template>
@@ -20,7 +23,19 @@ export default {
   currentPage: 'start',
   computed: {
     currentPage() {
-      return this.$route.path.includes('/cafes') ? 'start' : 'cafes';
+      if (this.$route.path === '/') {
+        return 'cafes';
+      }
+      if (this.$route.path === '/cafes') {
+        return 'start';
+      }
+      if (this.$route.path === '/rulette') {
+        return 'start';
+      }
+      if (this.$route.path.includes('/cafe/')) {
+        return 'cafe';
+      }
+      return 'start';
     },
   },
 };
