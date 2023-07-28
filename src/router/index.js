@@ -1,8 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 import startPage from '@/pages/startPage.vue';
-import cafePages from '@/pages/cafesPage.vue';
+import cafesPage from '@/pages/cafesPage.vue';
 import errorPage from '@/pages/errorPage.vue';
+import cafePage from '@/pages/cafePage.vue';
+import rulettePage from '@/pages/rulettePage.vue';
 
 Vue.use(VueRouter);
 
@@ -13,11 +15,19 @@ const routes = [
   },
   {
     path: '/cafes',
-    component: cafePages,
+    component: cafesPage,
   },
   {
     path: '*',
     component: errorPage,
+  },
+  {
+    path: '/rulette',
+    component: rulettePage,
+  },
+  {
+    path: '/cafe/:id',
+    component: cafePage,
   },
 ];
 

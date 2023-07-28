@@ -1,27 +1,38 @@
 <template>
-   <v-container fluid>
-    <v-app-bar
-      color="#c27800"
-      dense
-      dark>
-      <v-spacer/>
-    <v-btn outlined class="mr-10">
-        <router-link class="td" to="/" > Назад</router-link>
-    </v-btn>
-    </v-app-bar>
-  </v-container>
+      <v-container class="grid">
+          <CafeCard
+          v-for="cafe in cafes.data"
+          :key="cafe.id"
+          :cafe="cafe"
+          :id="cafe.id"
+          @openModal="openModal"
+        />
+      </v-container>
+
 </template>
 
 <script>
+import CafeCard from '../components/CafeCard.vue';
+import routes from '../routes';
 
 export default {
-  mounted() {
-    this.fetchData();
+  components: {
+    CafeCard,
+  },
+  data: () => ({
+    cafes: [],
+  }),
+  async mounted() {
+    try {
+      this.cafes = (await this.fetchData()).data;
+    } catch (e) {
+      console.log(e);
+      this.$toast.error('ошибка соединения');
+    }
   },
   methods: {
     fetchData() {
-      this.axios.get('https://bandaumnikov.ru/api/test/site/get-index')
-        .then((response) => console.log(response.data));
+      return this.axios.get(routes.dataPath());
     },
   },
 };
@@ -30,5 +41,14 @@ export default {
   .td{
     text-decoration: none;
     color: white;
+  }
+  .grid{
+    display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, auto));
+    gap: 10px;
+    height: fit-content;
+  }
+  .card{
+    width: 100%;
   }
 </style>

@@ -1,16 +1,5 @@
 <template>
   <div>
-  <v-container fluid>
-    <v-app-bar
-      color="#c27800"
-      dense
-      dark>
-      <v-spacer/>
-    <v-btn outlined class="mr-10">
-        <router-link class="td" to="/cafes" > Войти</router-link>
-    </v-btn>
-    </v-app-bar>
-  </v-container>
   <v-sheet
     class="pa-6 text-white mx-auto"
     color="#659DBD"
@@ -21,7 +10,7 @@
   >
 
     <h4 class="text-h4 font-weight-bold mb-4 text-center text-color">Привет!</h4>
-
+    <v-img :src="require('@/static/avatar1.jpeg')" alt='' />
     <p class="mb-8 text-color">
         Перед обедом нам сложно определиться, куда сходить поесть.
         Каждый раз одно и то же — начинаем вспоминать все места вокруг.
@@ -32,7 +21,6 @@
         еще раз испытать удачу.
       <br>
       <br>
-      <img class="image" :src="require('@/assets/avatar1.jpeg')" alt='' />
       <br>
         В приложении Вы увидите все варианты где поесть и можете «попросить»
         сервис выбрать случайное кафе.
@@ -45,6 +33,14 @@
       variant="flat"
     >
     <router-link class="td-inp" to="/cafes" >Выбрать кафе</router-link>
+    </v-btn>
+    <v-btn
+      class="text-none text-black mb-4 center"
+      color="red-accent-2"
+      size="x-large"
+      variant="flat"
+    >
+    <router-link class="td-inp" to="/rulette" >Случайный выбор</router-link>
     </v-btn>
   </v-sheet>
 </div>
@@ -67,6 +63,7 @@ export default {
     height: 50%;
   }
   .text-color{
+    font-family: 'Roboto';
     text-align: center;
     color:aliceblue;
   }

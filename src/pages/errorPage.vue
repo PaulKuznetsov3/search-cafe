@@ -1,16 +1,5 @@
 <template>
     <div>
-    <v-container fluid>
-      <v-app-bar
-        color="#c27800"
-        dense
-        dark>
-        <v-spacer/>
-        <v-btn outlined class="mr-10">
-         <router-link class="td" to="/" > Назад</router-link>
-     </v-btn>
-      </v-app-bar>
-    </v-container>
     <v-sheet
       class="pa-6 text-white mx-auto"
       color="#659DBD"
@@ -22,7 +11,7 @@
       <h4 class="text-h4 font-weight-bold mb-4 text-center text-color">Упс!</h4>
         <br>
         <br>
-        <img class="image" :src="require('@/assets/error.png')" alt='' />
+        <img class="image" :src="require('@/static/error.png')" alt='' />
         <br>
     </v-sheet>
   </div>
