@@ -2,7 +2,7 @@
     <v-card
       v-if="cafe.distance" class="mx-auto" max-width="90%" variant="outlined">
         <div>
-          <v-card-titele class="center">{{ cafe.name }}</v-card-titele>
+          <h4 class="center">{{ cafe.name }}</h4>
           <br>
           <v-img height="200px" :src=cafe.photo alt='' />
           <br>
