@@ -1,29 +1,30 @@
 <template>
-  <div>
-    <v-sheet
-      class="pa-6 text-white mx-auto"
-      color="#659DBD"
-      max-width="80%"
-      height="100%"
-      margin-top="100px"
-      text-align="justify"
-    >
-      <v-container>
-        <h2 class="text-h4 font-weight-bold mb-4 text-center text-color">{{ cafe.data?.name }}</h2>
-        <v-img :src="cafe.data?.photo" alt='' />
-        <h4 class="td text-center">Адрес:</h4>
-        <p class="td text-center">{{ cafe.data?.address }} ({{ `${cafe.data?.landmark}` }})</p>
-        <p class="td text-center"> <span>Расстояние: </span>{{ ` ${cafe.data?.distance} м` }}</p>
-        <p class="td text-center"> <span>Время пути: </span>{{ ` ${cafe.data?.time} минут` }}</p>
+  <v-container class="d-flex height-100vh justify-center " fill-height>
+    <v-card class="background">
+        <v-card-title class="justify-center text-h4 text-color">
+          {{ cafe.data?.name }}
+        </v-card-title>
+        <v-img :src="cafe.data?.photo" alt='' class="photo" />
+        <v-card-item>
+        <v-card-title class="td justify-center">Адрес:</v-card-title>
+        <v-card-subtitle class="td font-size ">
+          {{ cafe.data?.address }} ({{ `${cafe.data?.landmark}` }})
+        </v-card-subtitle>
+      </v-card-item>
+      <v-card-item>
+        <v-card-text class="td justify-center font-size text-center">
+          Расстояние: {{ ` ${cafe.data?.distance} м,`  }}
+           время пути: {{ `  ${cafe.data?.time} минут` }}
+        </v-card-text>
+      </v-card-item>
         <p class="td text-center" v-if="cafe.data?.business_lunch === true "> <span>бизнес-ланч:
         </span> есть</p>
         <p class="td text-center" v-else> <span>Бизнес-ланч:
         </span> нет</p>
         <p class="td text-center"><span>Кухня: </span>{{` ${cafe.data?.cuisine.toLowerCase()}`}}</p>
         <p class="td text-center"><span>Средняя цена: </span>{{` ${cafe.data?.price} рублей`}}</p>
-      </v-container>
-    </v-sheet>
-  </div>
+    </v-card>
+  </v-container>
 </template>
 
 <script>
@@ -60,28 +61,23 @@ export default {
     text-decoration: none;
     color: white;
   }
-  .card{
-    width: 100%;
-  }
-  .image{
-    width: 40%;
-    height: 40%;
-    display: block;
-    margin: auto;
-    margin-bottom: 20px ;;
-  }
   .text-color{
     text-align: center;
     color:aliceblue;
   }
-  .center{
+  p{
+    margin-bottom: 5px;
+  }
+  .background{
+    background: #659DBD;
+  }
+  .photo{
+    max-width: 450px;
+    max-height: 450px;
     display: block;
     margin: auto;
   }
-  .in-bl{
-    display: inline-block;
-  }
-  p{
-    margin-bottom: 5px;
+  .font-size{
+    font-size: 16px;
   }
 </style>

@@ -36,17 +36,10 @@ export default {
 };
 </script>
 <style scoped>
-  .td{
-    text-decoration: none;
-    color: white;
-  }
   .grid{
     display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, auto));
     gap: 10px;
     height: fit-content;
-  }
-  .card{
-    width: 100%;
   }
 </style>

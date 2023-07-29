@@ -19,7 +19,7 @@
       </p>
       <v-row justify="center">
         <v-btn
-        coll="4"
+        coll="5"
         class=" mb-4 btn"
         color="red-accent-2"
         size="x-large"
@@ -28,7 +28,7 @@
         <router-link class="td-inp" to="/cafes" >Выбрать кафе</router-link>
       </v-btn>
       <v-btn
-        coll="4"
+        coll="5"
         class="mb-4 btn"
         color="red-accent-2"
         size="x-large"
@@ -47,10 +47,6 @@ export default {
 };
 </script>
 <style scoped>
-  .td{
-    text-decoration: none;
-    color: white;
-  }
   img{
     display: block;
     margin: auto;

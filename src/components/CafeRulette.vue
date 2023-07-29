@@ -1,13 +1,8 @@
 <template>
     <v-card
-      v-if="cafe.distance" class="mx-auto" max-width="90%" variant="outlined">
-        <div >
-          <v-card-title class="justify-center">{{ cafe.name }}</v-card-title>
-          <v-img height="200px" :src=cafe.photo alt='' />
-          <v-card-text class="text-center">{{ cafe.address }} {{ `${cafe.distance}м` }}
-          </v-card-text>
-          <v-card-text class="text-center">{{ `кухня: ${cafe.cuisine}` }}</v-card-text>
-        </div>
+      class="mx-auto" variant="outlined">
+          <v-card-title class="justify-center font-size">{{ cafe.name }}</v-card-title>
+          <v-img :height="200" :src=cafe.photo alt='' />
       <v-card-actions class="justify-center">
         <v-btn variant="outlined" class="background">
           <router-link class="td" :to="'/cafe/' + id" >Подробнее</router-link>
@@ -17,7 +12,7 @@
 </template>
 <script>
 export default {
-  name: 'CafeCard',
+  name: 'CafeRulette',
   props: {
     cafe: {
       type: Object,
@@ -37,20 +32,14 @@ export default {
 </script>
 
 <style scoped>
-  .image{
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: 50%;
-  }
-  .center{
-    text-align: center;
-  }
   .td{
     text-decoration: none;
   }
   .background{
     background: #659DBD;
     color: white;
+  }
+  .font-size{
+    font-size: 13px;
   }
 </style>

@@ -1,27 +1,35 @@
 <template>
-  <div class="body">
+  <div class="body flex">
+    <p class="text">Случайный выбор Вам поможет сделать игра в рулетку!</p>
+    <p class="text">Сыграем?</p>
     <div class="app">
-      <img :src="require('@/static/pointer.jpg')" alt='' />
+      <img :src="require('@/static/pointer.png')" alt='' />
       <div class="scopeHidden" ref="scopeHidden">
         <ul ref="ul">
           <li v-for="(cafe, index) in filteredCafes" :key="cafe.id" :ref="`li${index}`">
-             <CafeCard
+             <CafeRulette
                :cafe="cafe"
                :id="cafe.id"
              />
            </li>
          </ul>
       </div>
-      <button class="btn" @click="start">Играть</button>
-
+      <v-btn v-if="caunter<=0" variant="outlined" class="btn" @click="start" color="#659DBD">
+        Играть!
+      </v-btn>
+      <v-btn v-else variant="outlined" class="btn" @click="start" color="#659DBD">
+        Играть еще!
+      </v-btn>
     </div>
   </div>
 </template>
 <script>
+import CafeRulette from '@/components/CafeRulette.vue';
 import routes from '../routes';
 
 export default {
   data: () => ({
+    caunter: 0,
     cafes: [],
   }),
   async mounted() {
@@ -36,9 +44,9 @@ export default {
       return this.axios.get(routes.dataPath());
     },
     start() {
+      this.caunter += 1;
       const move = -150 * Math.floor(Math.random() * 9);
       this.$refs.ul.style.left = `${move}px`;
-      console.log(this.$refs.scopeHidden);
     },
   },
   computed: {
@@ -46,6 +54,7 @@ export default {
       return this.cafes.data?.filter((cafe) => cafe.distance);
     },
   },
+  components: { CafeRulette },
 };
 </script>
 <style scoped>
@@ -63,14 +72,14 @@ export default {
   .scopeHidden{
     overflow: hidden;
     border-radius: 10px;
-    width: 800px;
+    max-width: 800px;
     margin: auto;
   }
   ul{
     position: relative;
     display: inline-flex;
     left: 0;
-    transition: 4s ease;
+    transition: 2s ease;
   }
   li{
     display: flex;
@@ -84,8 +93,8 @@ export default {
     width: 50px;
     height: 50px;
     left: 50%;
-    background: rgba(0,0,0,0);
-    transform: translate(-50%, 25px);
+    background:#ffefd5;
+    transform: translate(-50%, 50px);
   }
   .btn{
     position: relative;
@@ -94,5 +103,12 @@ export default {
     padding: 10px, 30px;
     cursor: pointer;
     transition: 0.2s ease;
+    color: white;
+    margin-bottom: 20px;
+  }
+  .text{
+    color: #659DBD;
+    text-align: center;
+    font-size: 20px;
   }
 </style>

@@ -5,13 +5,13 @@
       dense
       dark>
       <v-spacer/>
-    <v-btn v-if="currentPage === 'start'" outlined class="mr-10">
+    <v-btn v-if="currentPage === 'start'" outlined class="mr-5">
         <router-link class="td" to="/" >Назад</router-link>
     </v-btn>
-    <v-btn v-if="currentPage === 'cafes'" outlined class="mr-10">
+    <v-btn v-if="currentPage === 'cafes'" outlined class="mr-5">
         <router-link class="td" to="/cafes" >Войти</router-link>
     </v-btn>
-    <v-btn v-if="currentPage === 'cafe'" outlined class="mr-10">
+    <v-btn v-if="currentPage === 'cafe'" outlined class="mr-5">
         <router-link class="td" to="/cafes" >Назад</router-link>
     </v-btn>
     </v-app-bar>
@@ -23,6 +23,7 @@ export default {
   currentPage: 'start',
   computed: {
     currentPage() {
+      console.log(this.$route);
       if (this.$route.path === '/') {
         return 'cafes';
       }
