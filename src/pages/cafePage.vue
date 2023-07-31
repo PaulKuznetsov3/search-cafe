@@ -1,8 +1,25 @@
 <template>
-  <v-container class="d-flex height-100vh justify-center " fill-height>
+  <v-container class=" height-100vh justify-center " fill-height>
     <v-card class="background">
-        <v-card-title class="justify-center text-color td-name ">
+        <v-card-title class="text-color td-name name">
           {{ cafe.data?.name }}
+          <v-btn class="block">
+          <ShareNetwork
+          v-for="network in networks"
+          :network="network.network"
+          :key="network.network"
+          :style="{backgroundColor: network.color}"
+          :url="sharing.url"
+          :title="sharing.title"
+          :description="sharing.description"
+          :quote="sharing.quote"
+          :hashtags="sharing.hashtags"
+          :twitterUser="sharing.twitterUser"
+          >
+            <i :class="network.icon"></i>
+            <img :src="require('@/static/share.png')" alt='' width="20" height="20"/>
+          </ShareNetwork>
+        </v-btn>
         </v-card-title>
         <v-img :src="cafe.data?.photo" alt='' class="photo" />
         <v-card-title class="td-title text-color justify-center">
@@ -11,9 +28,9 @@
         <v-card-subtitle class="td-title text-color justify-center" style="color: white;">
           {{ cafe.data?.address }}
         </v-card-subtitle>
-        <v-card-text v-if="cafe.data?.landmark" class="td text-center" style="color: white;">
+        <p v-if="cafe.data?.landmark" class="td text-center" style="color: white;">
          ({{ `${cafe.data?.landmark}` }})
-        </v-card-text>
+        </p>
         <v-card-text v-if="cafe.data?.distance > 0 && cafe.data?.time > 0"
         class=" justify-center font-size text-center" style="color: white;">
           Расстояние: {{ ` ${cafe.data?.distance} м,`  }}
@@ -28,21 +45,6 @@
           Средняя цена: {{` ${cafe.data?.price} рублей`}}
         </p>
         <p v-else class="td text-center">Средняя цена: не указана</p>
-        <v-btn>
-          <ShareNetwork
-          v-for="network in networks"
-          :network="network.network"
-          :key="network.network"
-          :url="sharing.url"
-          :title="sharing.title"
-          :description="sharing.description"
-          :quote="sharing.quote"
-          :hashtags="sharing.hashtags"
-          >
-            <i :class="network.icon"></i>
-          <span>{{ network.name }}</span>
-          </ShareNetwork>
-        </v-btn>
     </v-card>
   </v-container>
 </template>
@@ -64,9 +66,6 @@ export default {
         hashtags: 'vuejs,vite,javascript',
       },
       networks: [
-        {
-          network: 'telegram', name: 'Telegram', icon: 'fab fah fa-lg fa-telegram-plane',
-        },
         {
           network: 'whatsapp', name: 'Whatsapp', icon: 'fab fah fa-lg fa-whatsapp',
         },
@@ -114,6 +113,17 @@ export default {
   }
   .font-size{
     font-size: 16px;
+  }
+  .block{
+    display: block;
+    float: right;
+    clear: both;
+    margin-left: 10px;
+  }
+  .name{
+    display: block;
+    margin: 5px, auto;
+    margin-left: 50px;
   }
   @media (max-width:991px) {
     .td-title{

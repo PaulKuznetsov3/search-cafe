@@ -21,7 +21,6 @@ export default {
   currentPage: 'start',
   computed: {
     currentPage() {
-      console.log(this.$route);
       if (this.$route.path === '/') {
         return 'cafes';
       }
