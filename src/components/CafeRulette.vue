@@ -1,7 +1,6 @@
 <template>
     <v-card
       class="mx-auto" variant="outlined">
-          <v-card-title class="justify-center font-size">{{ cafe.name }}</v-card-title>
           <v-img :height="200" :src=cafe.photo alt='' />
       <v-card-actions class="justify-center">
         <v-btn variant="outlined" class="background">
@@ -38,8 +37,5 @@ export default {
   .background{
     background: #659DBD;
     color: white;
-  }
-  .font-size{
-    font-size: 13px;
   }
 </style>

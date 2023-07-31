@@ -45,13 +45,13 @@ export default {
     },
     start() {
       this.caunter += 1;
-      const move = -150 * Math.floor(Math.random() * 9);
+      const move = -150 * Math.floor(Math.random() * 12);
       this.$refs.ul.style.left = `${move}px`;
     },
   },
   computed: {
     filteredCafes() {
-      return this.cafes.data?.filter((cafe) => cafe.distance);
+      return this.cafes.data?.filter((cafe) => cafe.address && cafe.photo);
     },
   },
   components: { CafeRulette },
@@ -94,7 +94,7 @@ export default {
     height: 50px;
     left: 50%;
     background:#ffefd5;
-    transform: translate(-50%, 50px);
+    transform: translate(-50%, 80px);
   }
   .btn{
     position: relative;

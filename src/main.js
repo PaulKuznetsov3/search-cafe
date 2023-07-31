@@ -4,6 +4,7 @@ import 'vuetify/dist/vuetify.min.css';
 import axios from 'axios';
 import Toast from 'vue-toastification';
 import 'vue-toastification/dist/index.css';
+import VueSocialSharing from 'vue-social-sharing';
 import App from './App.vue';
 import router from './router';
 import vuetify from './plugins/vuetify';
@@ -15,6 +16,7 @@ Vue.use(Vuetify);
 Vue.use(Toast, {
   duration: 1500,
 });
+Vue.use(VueSocialSharing);
 Vue.component('CafeCard', CafeCard);
 new Vue({
   router,

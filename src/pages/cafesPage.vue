@@ -1,7 +1,7 @@
 <template>
       <v-container class="grid">
           <CafeCard
-          v-for="cafe in cafes.data"
+          v-for="cafe in filteredCafes"
           :key="cafe.id"
           :cafe="cafe"
           :id="cafe.id"
@@ -31,6 +31,11 @@ export default {
   methods: {
     fetchData() {
       return this.axios.get(routes.dataPath());
+    },
+  },
+  computed: {
+    filteredCafes() {
+      return this.cafes.data?.filter((cafe) => cafe.address && cafe.photo);
     },
   },
 };

@@ -1,21 +1,19 @@
 <template>
-  <v-container fluid>
     <v-app-bar
+      class="d-flex"
       color="#c27800"
       dense
       dark>
-      <v-spacer/>
     <v-btn v-if="currentPage === 'start'" outlined class="mr-5">
         <router-link class="td" to="/" >Назад</router-link>
     </v-btn>
     <v-btn v-if="currentPage === 'cafes'" outlined class="mr-5">
         <router-link class="td" to="/cafes" >Войти</router-link>
     </v-btn>
-    <v-btn v-if="currentPage === 'cafe'" outlined class="mr-5">
-        <router-link class="td" to="/cafes" >Назад</router-link>
+    <v-btn v-if="currentPage === 'cafe'" outlined class="mr-5" @click="$router.go(-1);">
+      Назад
     </v-btn>
     </v-app-bar>
-  </v-container>
 </template>
 <script>
 export default {
@@ -45,5 +43,10 @@ export default {
   .td{
     text-decoration: none;
     color: white;
+  }
+  .d-flex{
+    max-height: 80px;
+    align-items: center;
+    justify-content: flex-end;
   }
 </style>

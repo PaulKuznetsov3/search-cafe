@@ -1,15 +1,12 @@
 <template>
     <v-card
-      v-if="cafe.distance" class="mx-auto" max-width="90%" variant="outlined">
+       class="mx-auto" max-width="90%" variant="outlined">
         <div >
-          <v-card-title class="justify-center">{{ cafe.name }}</v-card-title>
+          <v-card-title class="justify-center font-size">{{ cafe.name }}</v-card-title>
           <v-img height="200px" :src=cafe.photo alt='' />
-          <v-card-text class="text-center">{{ cafe.address }} {{ `${cafe.distance}м` }}
-          </v-card-text>
-          <v-card-text class="text-center">{{ `кухня: ${cafe.cuisine}` }}</v-card-text>
         </div>
       <v-card-actions class="justify-center">
-        <v-btn variant="outlined" class="background">
+          <v-btn variant="outlined" class="btn">
           <router-link class="td" :to="'/cafe/' + id" >Подробнее</router-link>
          </v-btn>
       </v-card-actions>
@@ -37,20 +34,15 @@ export default {
 </script>
 
 <style scoped>
-  .image{
-    display: block;
-    margin: auto;
-    width: 50%;
-    height: 50%;
-  }
-  .center{
-    text-align: center;
-  }
   .td{
     text-decoration: none;
   }
-  .background{
+  .btn{
     background: #659DBD;
     color: white;
+    margin: 10px;
+  }
+  .font-size{
+    font-size: 19px;
   }
 </style>

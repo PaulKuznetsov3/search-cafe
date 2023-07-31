@@ -21,10 +21,6 @@ export default {
 };
 </script>
 <style scoped>
-  .td{
-    text-decoration: none;
-    color: white;
-   }
    .text-color{
     text-align: center;
     color:aliceblue;
