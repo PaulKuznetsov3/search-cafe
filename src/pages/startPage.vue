@@ -19,7 +19,7 @@
       </p>
       <v-row justify="center">
         <v-btn
-        coll="5"
+        coll="4"
         class=" mb-4 btn"
         color="red-accent-2"
         size="x-large"
@@ -28,7 +28,7 @@
         <router-link class="td-inp" to="/cafes" >Выбрать кафе</router-link>
       </v-btn>
       <v-btn
-        coll="5"
+        coll="4"
         class="mb-4 btn"
         color="red-accent-2"
         size="x-large"
@@ -54,7 +54,7 @@ export default {
     height: 50%;
   }
   .btn{
-    width: 300px;
+    width: 250px;
     margin: 10px;
   }
   .text-color{

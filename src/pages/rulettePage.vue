@@ -78,7 +78,7 @@ export default {
   ul{
     position: relative;
     display: inline-flex;
-    left: 0;
+    left: 250px;
     transition: 2s ease;
   }
   li{
@@ -86,7 +86,7 @@ export default {
     justify-content: center;
     align-items: center;
     width:150px;
-    height: 400px;
+    height: 270px;
   }
   img{
     position: relative;
@@ -94,7 +94,7 @@ export default {
     height: 50px;
     left: 50%;
     background:#ffefd5;
-    transform: translate(-50%, 80px);
+    transform: translate(-50%, 20px);
   }
   .btn{
     position: relative;
@@ -110,5 +110,54 @@ export default {
     color: #659DBD;
     text-align: center;
     font-size: 20px;
+    margin-top: 20px;
+  }
+  @media (max-width:767px) {
+    .scopeHidden{
+      max-width: 700px;
+    }
+  }
+  @media (max-width:730px) {
+    .scopeHidden{
+      max-width: 600px;
+    }
+  }
+  @media (max-width:630px) {
+    .scopeHidden{
+      max-width: 500px;
+    }
+    ul{
+      left: 200px;
+    }
+  }
+  @media (max-width:530px) {
+    .scopeHidden{
+      max-width: 430px;
+    }
+    ul{
+      left: 180px;
+    }
+  }
+  @media (max-width:430px) {
+    .scopeHidden{
+      max-width: 330px;
+    }
+    ul{
+      left: 120px;
+    }
+    li{
+      width:140px;
+    }
+  }
+  @media (max-width:350px) {
+    .scopeHidden{
+      max-width: 300px;
+    }
+    ul{
+      left: 100px;
+    }
+    li{
+      width:140px;
+    }
   }
 </style>

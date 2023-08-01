@@ -5,7 +5,7 @@
           <v-card-title class="justify-center font-size">{{ cafe.name }}</v-card-title>
           <v-img height="200px" :src=cafe.photo alt='' />
         </div>
-      <v-card-actions class="justify-center">
+      <v-card-actions class="justify-center zoom">
           <v-btn variant="outlined" class="btn">
           <router-link class="td" :to="'/cafe/' + id" >Подробнее</router-link>
          </v-btn>
@@ -45,4 +45,10 @@ export default {
   .font-size{
     font-size: 19px;
   }
+  .zoom {
+  transition: transform .2s;
+  }
+.zoom:hover {
+  transform: scale(1.05);
+}
 </style>

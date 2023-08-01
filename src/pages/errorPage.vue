@@ -1,5 +1,5 @@
 <template>
-    <div>
+  <div>
     <v-sheet
       class="pa-6 text-white mx-auto"
       color="#659DBD"
@@ -15,7 +15,7 @@
         <br>
     </v-sheet>
   </div>
-  </template>
+</template>
 <script>
 export default {
 };

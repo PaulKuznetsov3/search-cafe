@@ -1,13 +1,12 @@
 <template>
-      <v-container class="grid">
-          <CafeCard
-          v-for="cafe in filteredCafes"
-          :key="cafe.id"
-          :cafe="cafe"
-          :id="cafe.id"
-        />
-      </v-container>
-
+  <v-container class="grid">
+      <CafeCard class="back-color"
+        v-for="cafe in filteredCafes"
+        :key="cafe.id"
+        :cafe="cafe"
+        :id="cafe.id"
+      />
+  </v-container>
 </template>
 
 <script>
@@ -46,5 +45,8 @@ export default {
             grid-template-columns: repeat(auto-fill, minmax(300px, auto));
     gap: 10px;
     height: fit-content;
+  }
+  .back-color:hover {
+    background-color: #659DBD;
   }
 </style>

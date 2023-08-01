@@ -1,25 +1,26 @@
 <template>
   <v-container class=" height-100vh justify-center " fill-height>
     <v-card class="background">
-        <v-card-title class="text-color td-name name">
+        <v-card-title class="text-color name">
           {{ cafe.data?.name }}
-          <v-btn class="block">
-          <ShareNetwork
-          v-for="network in networks"
-          :network="network.network"
-          :key="network.network"
-          :style="{backgroundColor: network.color}"
-          :url="sharing.url"
-          :title="sharing.title"
-          :description="sharing.description"
-          :quote="sharing.quote"
-          :hashtags="sharing.hashtags"
-          :twitterUser="sharing.twitterUser"
-          >
-            <i :class="network.icon"></i>
-            <img :src="require('@/static/share.png')" alt='' width="20" height="20"/>
-          </ShareNetwork>
-        </v-btn>
+          <v-spacer/>
+          <v-btn x-small>
+            <ShareNetwork
+              v-for="network in networks"
+              :network="network.network"
+              :key="network.network"
+              :style="{backgroundColor: network.color}"
+              :url="sharing.url"
+              :title="sharing.title"
+              :description="sharing.description"
+              :quote="sharing.quote"
+              :hashtags="sharing.hashtags"
+              :twitterUser="sharing.twitterUser"
+            >
+              <i :class="network.icon"></i>
+              <img :src="require('@/static/share.png')" alt='' width="20" height="20"/>
+            </ShareNetwork>
+          </v-btn>
         </v-card-title>
         <v-img :src="cafe.data?.photo" alt='' class="photo" />
         <v-card-title class="td-title text-color justify-center">
@@ -29,22 +30,31 @@
           {{ cafe.data?.address }}
         </v-card-subtitle>
         <p v-if="cafe.data?.landmark" class="td text-center" style="color: white;">
-         ({{ `${cafe.data?.landmark}` }})
+          ({{ `${cafe.data?.landmark}` }})
         </p>
         <v-card-text v-if="cafe.data?.distance > 0 && cafe.data?.time > 0"
-        class=" justify-center font-size text-center" style="color: white;">
+          class=" justify-center font-size text-center"
+          style="color: white;"
+        >
           Расстояние: {{ ` ${cafe.data?.distance} м,`  }}
-           время пути: {{ `  ${cafe.data?.time} минут` }}
+          время пути: {{ `  ${cafe.data?.time} минут` }}
         </v-card-text>
-        <p class="td text-center" v-if="cafe.data?.business_lunch === true ">бизнес-ланч:
-         есть</p>
-        <p class="td text-center" v-else>Бизнес-ланч:
-         нет</p>
-        <p class="td text-center"><span>Кухня: </span>{{` ${cafe.data?.cuisine.toLowerCase()}`}}</p>
-        <p v-if="cafe.data?.price !== 0" class="td text-center">
+        <p class="td text-center" v-if="cafe.data?.business_lunch === true ">
+          бизнес-ланч: есть
+        </p>
+        <p class="td text-center" v-else>
+          Бизнес-ланч: нет
+        </p>
+        <p class="td text-center">
+          Кухня: {{` ${cafe.data?.cuisine.toLowerCase()}`}}
+        </p>
+        <p v-if="cafe.data?.price !== 0"
+          class="td text-center">
           Средняя цена: {{` ${cafe.data?.price} рублей`}}
         </p>
-        <p v-else class="td text-center">Средняя цена: не указана</p>
+        <p v-else class="td text-center">
+          Средняя цена: не указана
+        </p>
     </v-card>
   </v-container>
 </template>
@@ -114,16 +124,8 @@ export default {
   .font-size{
     font-size: 16px;
   }
-  .block{
-    display: block;
-    float: right;
-    clear: both;
-    margin-left: 10px;
-  }
   .name{
-    display: block;
-    margin: 5px, auto;
-    margin-left: 50px;
+    margin-left: 15px;
   }
   @media (max-width:991px) {
     .td-title{
@@ -132,9 +134,6 @@ export default {
     .font-size{
       font-size: 13px;
     }
-    .td-name {
-      font-size: 20px;
-    }
   }
   @media (max-width:1200px) {
     .td-title{
@@ -142,10 +141,6 @@ export default {
     }
     .font-size{
       font-size: 13px;
-    }
-    .td-name {
-      font-size: 29px;
-      overflow-wrap:break-word;
     }
   }
 </style>
