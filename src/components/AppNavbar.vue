@@ -1,9 +1,13 @@
 <template>
     <v-app-bar
-      class="d-flex"
+      class="nav"
       color="#c27800"
       dense
       dark>
+      <v-btn v-if="$route.path !== '/'" outlined class="mr-5 home">
+        <router-link class="td" to="/" >На главную</router-link>
+    </v-btn>
+    <v-spacer/>
     <v-btn v-if="currentPage === 'start'" outlined class="mr-5">
         <router-link class="td" to="/" >Назад</router-link>
     </v-btn>
@@ -43,9 +47,12 @@ export default {
     text-decoration: none;
     color: white;
   }
-  .d-flex{
+  .nav{
     max-height: 80px;
-    align-items: center;
-    justify-content: flex-end;
+    display: block;
+  }
+  .home{
+    float: left;
+    margin-left: 15px;
   }
 </style>

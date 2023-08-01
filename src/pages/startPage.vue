@@ -52,6 +52,7 @@ export default {
     margin: auto;
     width: 50%;
     height: 50%;
+    margin-bottom: 10px;
   }
   .btn{
     width: 250px;
@@ -69,8 +70,12 @@ export default {
   }
   .background{
     background: #659DBD;
+    padding: 15px;
   }
   .flex{
     justify-content: center;
+  }
+  p{
+    font-size: 20px;
   }
 </style>

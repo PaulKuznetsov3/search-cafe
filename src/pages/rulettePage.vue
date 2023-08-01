@@ -1,29 +1,33 @@
 <template>
-  <div class="body flex">
-    <p class="text">Случайный выбор Вам поможет сделать игра в рулетку!</p>
-    <p class="text">Сыграем?</p>
-    <div class="app">
-      <img :src="require('@/static/pointer.png')" alt='' />
-      <div class="scopeHidden" ref="scopeHidden">
-        <ul ref="ul">
-          <li v-for="(cafe, index) in filteredCafes" :key="cafe.id" :ref="`li${index}`">
-             <CafeRulette
-               :cafe="cafe"
-               :id="cafe.id"
-             />
-           </li>
-         </ul>
+  <div class="div-flex">
+    <PreLoader v-if="loading" class="load"/>
+    <div v-else class="body flex">
+      <p class="text">Случайный выбор Вам поможет сделать игра в рулетку!</p>
+      <p class="text">Сыграем?</p>
+      <div class="app">
+        <img :src="require('@/static/pointer.png')" alt='' />
+        <div class="scopeHidden" ref="scopeHidden">
+          <ul ref="ul">
+            <li v-for="(cafe, index) in filteredCafes" :key="cafe.id" :ref="`li${index}`">
+              <CafeRulette
+                :cafe="cafe"
+                :id="cafe.id"
+              />
+            </li>
+          </ul>
+        </div>
+        <v-btn v-if="caunter<=0" variant="outlined" class="btn" @click="start" color="#659DBD">
+          Играть!
+        </v-btn>
+        <v-btn v-else variant="outlined" class="btn" @click="start" color="#659DBD">
+          Играть еще!
+        </v-btn>
       </div>
-      <v-btn v-if="caunter<=0" variant="outlined" class="btn" @click="start" color="#659DBD">
-        Играть!
-      </v-btn>
-      <v-btn v-else variant="outlined" class="btn" @click="start" color="#659DBD">
-        Играть еще!
-      </v-btn>
     </div>
   </div>
 </template>
 <script>
+import PreLoader from '@/components/PreLoader.vue';
 import CafeRulette from '@/components/CafeRulette.vue';
 import routes from '../routes';
 
@@ -31,12 +35,16 @@ export default {
   data: () => ({
     caunter: 0,
     cafes: [],
+    loading: false,
   }),
   async mounted() {
+    this.loading = true;
     try {
       this.cafes = (await this.fetchData()).data;
     } catch (e) {
       this.$toast.error('ошибка соединения');
+    } finally {
+      this.loading = false;
     }
   },
   methods: {
@@ -54,7 +62,7 @@ export default {
       return this.cafes.data?.filter((cafe) => cafe.address && cafe.photo);
     },
   },
-  components: { CafeRulette },
+  components: { CafeRulette, PreLoader },
 };
 </script>
 <style scoped>
@@ -111,6 +119,13 @@ export default {
     text-align: center;
     font-size: 20px;
     margin-top: 20px;
+  }
+  .load{
+    display: flex;
+    align-items: center;
+  }
+  .div-flex{
+    display: flex;
   }
   @media (max-width:767px) {
     .scopeHidden{

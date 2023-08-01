@@ -1,6 +1,8 @@
 <template>
-  <v-container class=" height-100vh justify-center " fill-height>
-    <v-card class="background">
+  <div class="flex">
+    <PreLoader v-if="loading" class="load"/>
+    <v-container v-else class=" height-100vh justify-center " fill-height>
+      <v-card class="background">
         <v-card-title class="text-color name">
           {{ cafe.data?.name }}
           <v-spacer/>
@@ -55,17 +57,23 @@
         <p v-else class="td text-center">
           Средняя цена: не указана
         </p>
-    </v-card>
-  </v-container>
+      </v-card>
+    </v-container>
+  </div>
 </template>
 
 <script>
+import PreLoader from '@/components/PreLoader.vue';
 import routes from '../routes';
 
 export default {
   name: 'Roulette',
+  components: {
+    PreLoader,
+  },
   data() {
     return {
+      loading: false,
       cafe: [],
       id: this.$route.params.id,
       sharing: {
@@ -83,10 +91,13 @@ export default {
     };
   },
   async mounted() {
+    this.loading = true;
     try {
       this.cafe = (await this.fetchCafeData()).data;
     } catch (e) {
       this.$toast.error('ошибка соединения');
+    } finally {
+      this.loading = false;
     }
   },
   methods: {
@@ -142,5 +153,12 @@ export default {
     .font-size{
       font-size: 13px;
     }
+  }
+  .load{
+    display: flex;
+    align-items: center;
+  }
+  .flex{
+    display: flex;
   }
 </style>
