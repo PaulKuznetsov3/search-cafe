@@ -1,23 +1,24 @@
 <template>
-    <v-app-bar
-      class="nav"
-      color="#c27800"
-      dense
-      dark>
-      <v-btn v-if="$route.path !== '/'" outlined class="mr-5 home">
-        <router-link class="td" to="/" >На главную</router-link>
-    </v-btn>
-    <v-spacer/>
+  <v-app-bar
+    class="nav"
+    color="#c27800"
+    dense
+    dark
+  >
+    <v-btn v-if="$route.path !== '/'" outlined class="mr-5 home">
+     <router-link class="td" to="/" >На главную</router-link>
+     </v-btn>
+     <v-spacer/>
     <v-btn v-if="currentPage === 'start'" outlined class="mr-5">
-        <router-link class="td" to="/" >Назад</router-link>
+      <router-link class="td" to="/" >Назад</router-link>
     </v-btn>
     <v-btn v-if="currentPage === 'cafes'" outlined class="mr-5">
-        <router-link class="td" to="/cafes" >Войти</router-link>
+      <router-link class="td" to="/cafes" >Войти</router-link>
     </v-btn>
     <v-btn v-if="currentPage === 'cafe'" outlined class="mr-5" @click="$router.go(-1);">
       Назад
     </v-btn>
-    </v-app-bar>
+  </v-app-bar>
 </template>
 <script>
 export default {
@@ -48,7 +49,7 @@ export default {
     color: white;
   }
   .nav{
-    max-height: 80px;
+    max-height: 50px;
     display: block;
   }
   .home{
