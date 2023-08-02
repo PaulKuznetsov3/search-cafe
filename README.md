@@ -1,5 +1,9 @@
 # search-cafe
 
+## Description
+```
+This is a service that can randomly choose a new version of the cafe.
+```
 ## Project setup
 ```
 npm install
